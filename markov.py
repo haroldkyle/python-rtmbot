@@ -1,3 +1,6 @@
+# inspired by and borrowed from
+# https://github.com/ericflo/yourmomdotcom/blob/master/yourmomdotcom.py
+
 from collections import defaultdict
 import codecs
 import random
