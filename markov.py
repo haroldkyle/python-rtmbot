@@ -7,7 +7,6 @@ STOP_WORD = "\n"
 
 
 def add_to_brain(msg, chain_length, write_to_file=False):
-    print(msg)
     if write_to_file:
         f = codecs.open('dillingham_markov.txt', 'a', 'utf-8')
         f.write(msg + '\n')
