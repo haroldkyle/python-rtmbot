@@ -1,9 +1,9 @@
-#!/usr/bin/env python
-
 import sys
+
 sys.dont_write_bytecode = True
 
 import glob
+import codecs
 import yaml
 import json
 import os
@@ -210,10 +210,10 @@ if __name__ == "__main__":
     files_currently_downloading = []
     job_hash = {}
     if os.path.exists('dillingham_markov.txt'):
-        with open('dillingham_markov.txt', 'r') as f:
+        with codecs.open('dillingham_markov.txt', 'r', 'utf-8') as f:
             for line in f:
                 add_to_brain(line, bot.chain_length)
-        print 'Brain Reloaded'
+        print(u'Brain Reloaded')
         f.close()
 
     if "DAEMON" in config:

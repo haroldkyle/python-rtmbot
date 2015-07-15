@@ -1,4 +1,5 @@
 from collections import defaultdict
+import codecs
 import random
 
 markov = defaultdict(list)
@@ -6,8 +7,9 @@ STOP_WORD = "\n"
 
 
 def add_to_brain(msg, chain_length, write_to_file=False):
+    print(msg)
     if write_to_file:
-        f = open('dillingham_markov.txt', 'a')
+        f = codecs.open('dillingham_markov.txt', 'a', 'utf-8')
         f.write(msg + '\n')
         f.close()
     buf = [STOP_WORD] * chain_length
