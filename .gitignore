@@ -1,5 +1,4 @@
 *.pyc
 /doc/config/rtmbot.conf
-/plugins/**
 env
 dillingham_markov.txt
