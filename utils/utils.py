@@ -4,7 +4,7 @@ import client
 
 
 def help(args):
-    statement = 'Welcome to Brian Gilhooly bot!\n\n I have many useful features.\n\n Type !gilhooly or !brian to talk to me\n\n Type !gilhooly image followed by a search term to have me fetch an image from Google for you\n'
+    statement = 'Welcome to Brian Gilhooly bot!\n\n I have many useful features.\n\n Type !gilhooly or !brian to talk to me\n\n Type !gilhooly image followed by a search term to have me fetch an image from Google for you\n\n Type !gilhooly present to see which users are active'
     return statement
 
 
