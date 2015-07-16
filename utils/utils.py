@@ -23,7 +23,9 @@ def get_present_users(args=None):
     present_users = []
     # print all_users
     for user in users:
+        if user['id'] == u'U07KW1M6U':
+            continue
         presence = client.get_presence(user['id'])
         if presence['presence'] == 'active':
             present_users.append(user['real_name'])
-    return u'\n'.join(present_users)
+    return u', '.join(present_users)
