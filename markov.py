@@ -2,10 +2,12 @@
 # https://github.com/ericflo/yourmomdotcom/blob/master/yourmomdotcom.py
 
 from collections import defaultdict
+from datetime import datetime
 import codecs
 import random
 
 markov = defaultdict(list)
+start_time = datetime.utcnow()
 STOP_WORD = "\n"
 
 
@@ -41,3 +43,13 @@ def generate_sentence(msg, chain_length, max_words=10000):
         del buf[0]
         buf.append(next_word)
     return ' '.join(message)
+
+
+def markov_stats():
+    total_count = 0
+    for k, v in markov.iteritems():
+        total_count += len(v)
+    total_run_time = datetime.utcnow() - start_time
+    stats = 'Number of keys: {}\n Total lengh of chains: {}\n Total run time: {}\n'.format(
+        len(markov.keys()), total_count, total_run_time)
+    return stats
