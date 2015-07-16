@@ -45,7 +45,7 @@ def generate_sentence(msg, chain_length, max_words=10000):
     return ' '.join(message)
 
 
-def markov_stats():
+def stats(args=None):
     total_count = 0
     for k, v in markov.iteritems():
         total_count += len(v)
