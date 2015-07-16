@@ -11,5 +11,8 @@ def init(token):
 
 
 def get_users():
-    return json.loads(
-            api_client.api_call('users.list'))['members']
+    return json.loads(api_client.api_call('users.list'))['members']
+
+
+def get_presence(id):
+    return json.loads(api_client.api_call('users.getPresence', user=id))

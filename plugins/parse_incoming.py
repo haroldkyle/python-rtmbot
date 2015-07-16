@@ -8,7 +8,8 @@ alert_phrases = [u'!gilhooly', u'!bryan', u'!brian', u'!bryam']
 command_dispatch = {
     u'stats': markov.stats,
     u'image': utils.image_search,
-    u'help': utils.help
+    u'help': utils.help,
+    u'present': utils.get_present_users
 }
 
 
@@ -54,8 +55,8 @@ def process_presence_change(data):
             real_name = user['real_name']
             break
     if data['presence'] == u'active':
-        outputs.append([u"C07HXBJ79", random.choice(possible_greetings).format(
-            real_name)])
+        outputs.append([u"C07HXBJ79",
+                        random.choice(possible_greetings).format(real_name)])
     if data['presence'] == u'away':
-        outputs.append([u"C07HXBJ79", random.choice(possible_goodbyes).format(
-            real_name)])
+        outputs.append([u"C07HXBJ79",
+                        random.choice(possible_goodbyes).format(real_name)])

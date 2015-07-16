@@ -1,5 +1,6 @@
 import urllib2
 import json
+import client
 
 
 def help(args):
@@ -15,3 +16,14 @@ def image_search(args=None):
     f = fetcher.open(searchUrl)
     deserialized_output = json.loads(f.read())
     return deserialized_output['responseData']['results'][0]['unescapedUrl']
+
+
+def get_present_users(args=None):
+    users = client.get_users()
+    present_users = []
+    # print all_users
+    for user in users:
+        presence = client.get_presence(user['id'])
+        if presence['presence'] == 'active':
+            present_users.append(user['real_name'])
+    return u'\n'.join(present_users)
