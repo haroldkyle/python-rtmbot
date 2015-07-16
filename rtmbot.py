@@ -12,8 +12,8 @@ import time
 import logging
 from argparse import ArgumentParser
 
-from slackclient import SlackClient
 from markov import add_to_brain
+import client
 
 
 def dbg(debug_string):
@@ -22,16 +22,15 @@ def dbg(debug_string):
 
 
 class RtmBot(object):
-    def __init__(self, token):
+    def __init__(self, slackclient):
         self.last_ping = 0
-        self.token = token
+        self.token = slackclient.token
         self.bot_plugins = []
-        self.slack_client = None
+        self.slack_client = slackclient
         self.chain_length = 2
 
     def connect(self):
         """Convenience method that creates Server instance"""
-        self.slack_client = SlackClient(self.token)
         self.slack_client.rtm_connect()
 
     def start(self):
@@ -205,7 +204,8 @@ if __name__ == "__main__":
         directory = os.path.abspath("{}/{}".format(os.getcwd(), directory))
     config = yaml.load(file(args.config or 'doc/config/rtmbot.conf', 'r'))
     debug = config["DEBUG"]
-    bot = RtmBot(config["SLACK_TOKEN"])
+    api_client = client.init(config["SLACK_TOKEN"])
+    bot = RtmBot(api_client)
     site_plugins = []
     files_currently_downloading = []
     job_hash = {}
