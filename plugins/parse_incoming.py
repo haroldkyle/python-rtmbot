@@ -44,6 +44,8 @@ possible_goodbyes = [
 
 
 def process_presence_change(data):
+    if random.random() < .95:
+        return
     print data
     if data['user'] == u'U07KW1M6U':
         return
