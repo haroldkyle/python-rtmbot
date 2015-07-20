@@ -3,12 +3,14 @@ import json
 import client
 
 
-def help(args):
+def help(args, data=None):
     statement = 'Welcome to Brian Gilhooly bot!\n\n I have many useful features.\n\n Type !gilhooly or !brian to talk to me\n\n Type !gilhooly image followed by a search term to have me fetch an image from Google for you\n\n Type !gilhooly present to see which users are active'
     return statement
 
 
-def image_search(args=None):
+def image_search(args=None, data=None):
+    if data['user'] == u'U07RGECJ1':
+        return u'http://files.disappearednews.com/images/8b0e9098d968_EC08/Varady1.jpg'
     args = args.replace(u' ', u'%20')
     fetcher = urllib2.build_opener()
     startIndex = u'0'
@@ -18,7 +20,7 @@ def image_search(args=None):
     return deserialized_output['responseData']['results'][0]['unescapedUrl']
 
 
-def get_present_users(args=None):
+def get_present_users(args=None, data=None):
     users = client.get_users()
     present_users = []
     # print all_users

@@ -21,7 +21,7 @@ def process_message(data):
         return
     command, _, args = message.partition(u' ')
     if command in command_dispatch.keys():
-        outputs.append([u"C07HXBJ79", command_dispatch[command](args)])
+        outputs.append([u"C07HXBJ79", command_dispatch[command](args, data)])
         return
     markov.add_to_brain(message, 2, True)
     outputs.append([u"C07HXBJ79", markov.generate_sentence(message, 2,
