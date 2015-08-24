@@ -21,3 +21,6 @@ def get_users():
 # get_presence returns if a certain user is active or not in chat
 def get_presence(id):
     return json.loads(api_client.api_call('users.getPresence', user=id))
+
+def get_userinfo(id):
+    return json.loads(api_client.api_call('users.info', user=id))['user']
